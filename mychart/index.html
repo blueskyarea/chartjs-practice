@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>My Chart</title>
+</head>
+<body>
+  <canvas id="my_chart">
+    Canvas is not supported.
+  </canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script>
+    (function(){
+      'use strict';
+      var type = 'line';
+      var data = {
+        labels: [2017, 2018, 2019, 2020],
+        datasets: [{
+          label: 'MrA',
+          data: [520, 420, 230, 600]
+        },{
+          label: 'MrB',
+          data: [200, 300, 400, 500]
+        }]
+      };
+      var options;
+      var ctx = document.getElementById('my_chart').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: type,
+        data: data,
+        options: options
+      });
+    }());
+  </script>
+</body>
+</html>
