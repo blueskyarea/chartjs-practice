@@ -12,25 +12,31 @@
   <script>
     (function(){
       'use strict';
-      var type = 'line';
+      //var type = 'line';
+      var type = 'bar';
       var data = {
         labels: [2017, 2018, 2019, 2020],
         datasets: [{
           label: 'MrA',
           data: [520, 420, 230, 600],
           borderColor: 'red',
-          borderWidth: 5,
+          borderWidth: 0,
+          backgroundColor: 'rgba(255, 0, 0, 0.3)',
           fill: false,
           lineTension: 0,
-          pointStyle: 'rect'
+          pointStyle: 'rect',
+          yAxisID: 'mrA-axes'
         },{
           label: 'MrX',
-          data: [200, 300, 400, 500],
+          data: [200, 800, 1260, 1502],
+          type: 'line',
+          fill: false,
           borderColor: 'blue',
           borderWidth: 5,
           backgroundColor: 'rgba(0, 0, 255, 0.3)',
           lineTension: 0,
-          pointStyle: 'triangle'
+          pointStyle: 'triangle',
+          yAxisID: 'mrX-axes'
         }]
       };
       var options = {
@@ -38,11 +44,29 @@
           yAxes: [{
             ticks: {
               suggestedMin: 0,
-              suggestedMax: 400,
+              suggestedMax: 800,
               stepSize: 100,
               callback: function(value,index, values) {
-                return 'Test' + value;
+                return 'A ' + value;
               }
+            },
+            id: 'mrA-axes',
+            type: 'linear',
+            position: 'left'
+          },{
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 2000,
+              stepSize: 100,
+              callback: function(value,index, values) {
+                return 'X ' + value;
+              }
+            },
+            id: 'mrX-axes',
+            type: 'linear',
+            position: 'right',
+            gridLines: {
+              display: false
             }
           }]
         },
